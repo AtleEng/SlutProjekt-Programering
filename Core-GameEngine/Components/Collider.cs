@@ -7,11 +7,14 @@ namespace Core
     // This class handles the Colliders in the game (It is more like trigger in unity)
     public class Collider : Component
     {
+
         // The rectangle used for collision detection
         Rectangle hitBox = new Rectangle(0, 0, 100, 100);
 
         // The local position of the collider relative to its parent entity
         Vector2 localPosition = new Vector2(0, 0);
+        //tag används för att få entitys att skilja på olika kollisioner
+        public Tag tag = Tag.none;
 
         public override void Start()
         {
@@ -52,8 +55,8 @@ namespace Core
         {
             if (Raylib.CheckCollisionRecs(hitBox, other.hitBox))
             {
-                entity.OnTrigger(other.entity);
-                System.Console.WriteLine(entity.name + " collided with: " + other.entity.name);
+                entity.OnTrigger(other);
+                //System.Console.WriteLine(entity.name + " collided with: " + other.entity.name);
             }
         }
 
@@ -63,6 +66,11 @@ namespace Core
 
             hitBox.width = width;
             hitBox.height = height;
+        }
+
+        public enum Tag
+        {
+            none, player, enemy, bullet
         }
     }
 }

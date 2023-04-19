@@ -7,10 +7,12 @@ namespace Entities
 {
     public class GameManager : Entity
     {
-        GameManagerScript gM = new();
-        public override void Build()
+        public GameManager()
         {
-            components.Add(gM);
+            //set name
+            name = "GameManager";
+            //Add components
+            components.Add(new GameManagerScript());
         }
     }
 }

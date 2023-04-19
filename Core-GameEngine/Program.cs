@@ -1,5 +1,8 @@
 ﻿using Core;//för att använda min "game engine" behöver man använda Core;
 
+//Hej Mike detta här är mitt slutprojekt. De delar som jag vill visa är i mapparna Core och Components.
+//De andra koden i mapparna Entitys och Script är inte färdig och så bra gjorda utan används mer som en "demo" för att kunna visa hur mitt system funkar
+
 //Detta program bygger på ECS --> Entity component system
 
 //Förbättringar som kan göras av mitt ECS är:

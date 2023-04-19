@@ -38,7 +38,7 @@ namespace Core
             //sätt en minsta gräns för fönstret
             Raylib.SetWindowMinSize(400, 300);
             //sätt en viss FPS (Bildrutor per sekund)
-            Raylib.SetTargetFPS(200);
+            Raylib.SetTargetFPS(60);
             //tar bort alternativet att klicka esc för att gå ut ur spelet
             Raylib.SetExitKey(KeyboardKey.KEY_NULL);
             //------------------------------------------------

@@ -16,7 +16,7 @@ namespace Core
         public virtual void Update() { } //Update spelas varje frame och är till logic
         public virtual void EditMode() { } //Som Update men för grafik
 
-        public virtual void OnTrigger(Entity other) { } //Spelas när denna entity kolliderar (Mer som överlappa) med ett annat
+        public virtual void OnTrigger(Collider other) { } //Spelas när denna entity kolliderar (Mer som överlappa) med ett annat
     }
     //Detta är den abstrakta classen Entity - Entitys har componenter som ger dem functioner
     public abstract class Entity
@@ -25,7 +25,6 @@ namespace Core
         public Vector2 position = Vector2.Zero; //Positionen för Entity
         public List<Component> components = new(); //Listan med alla componenter till entity
 
-        public virtual void Build() { }
         public void Start() //Start spelas (run) när objektet skapas och innan Update
         {
             foreach (Component component in components) //lopar igenom alla componenter
@@ -55,7 +54,7 @@ namespace Core
                 component.EditMode();
             }
         }
-        public virtual void OnTrigger(Entity other) //Spelas när denna entity kolliderar (Mer som överlappa) med ett annat
+        public virtual void OnTrigger(Collider other) //Spelas när denna entity kolliderar (Mer som överlappa) med ett annat
         {
             foreach (Component component in components) //lopar igenom alla componenter
             {
@@ -134,12 +133,11 @@ namespace Core
         }
         public static void OnStart()
         {
-            Spawn(new GameManager(), Vector2.Zero);
+            Spawn(new GameManager(), Vector2.Zero); //spawna gamemanager entityn som ansvarar över att kontrollera spelet
         }
         public static void Spawn(Entity entity, Vector2 spawnPos) //detta skapar en ny entity
         {
             entity.position = spawnPos; //sätter positionen till spawnPos
-            entity.Build(); //Build är det process där entity "bygger sig själv" genom att lägga till och ändra components
             entity.Start(); //Aktivera start för den nya entity
             entitiesToAdd.Add(entity);
         }
@@ -154,7 +152,7 @@ namespace Core
                 try //Försöker ta bort entity, om det inte går ignorera och skriv ut i consolen
                 {
                     entity.OnDestroy(); //Aktivera OnDestroy för det entity som ska tas bort
-                    entitiesInScene.Remove(entity);
+                    entitiesInScene.Remove(entity); //tar bort entity
                     System.Console.WriteLine(entity.name + " has been removed");
                 }
                 catch
@@ -167,15 +165,8 @@ namespace Core
 
             foreach (Entity entity in entitiesToAdd) //lopar igenom alla entities i listan
             {
-                try //Försöker lägga till entity, om det inte går ignorera och skriv ut i consolen
-                {
-                    entitiesInScene.Add(entity);
-                    System.Console.WriteLine(entity.name + " has been added");
-                }
-                catch
-                {
-                    System.Console.WriteLine(entity.name + " do not exist");
-                }
+                entitiesInScene.Add(entity); //lägger till entity i listan
+                System.Console.WriteLine(entity.name + " has been added");
             }
             entitiesToAdd.Clear(); //rensar listan 
         }

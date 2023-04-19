@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fz8cJPE47klVHXBfWCMm35/LLdbc7y5R8WpiiIvnENs2t/SQQajp9FRLDAuP76Cpx7lZ/IWZmBm/cdK6ZQ6TYQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\atle.engelbrektsson\\Documents\\C#\\SlutProjekt-Programering\\Core-GameEngine\\Core-GameEngine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\atle.engelbrektsson\\.nuget\\packages\\raylib-cs\\4.2.0.2\\raylib-cs.4.2.0.2.nupkg.sha512",
+    "C:\\Users\\atle.engelbrektsson\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
